@@ -1,3 +1,3 @@
 [submodule "libs/external-lib"]
 	path = libs/external-lib
-	url = ..\\external-lib
+	url = https://github.com/vijeth06/external-lib.git
