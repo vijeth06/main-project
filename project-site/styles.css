@@ -1,12 +1,10 @@
 :root {
-  --bg: #f8f3e9;
-  --ink: #1f2a37;
-  --muted: #556070;
-  --accent: #ff6a3d;
-  --accent-2: #1e9f8f;
-  --card: #fffdf8;
-  --line: #e8dcc8;
-  --shadow: 0 12px 28px rgba(31, 42, 55, 0.08);
+  --bg: #f6f7fb;
+  --ink: #1f2937;
+  --muted: #4b5563;
+  --accent: #0f766e;
+  --card: #ffffff;
+  --line: #d7dde7;
 }
 
 * {
@@ -22,36 +20,9 @@ body {
 body {
   font-family: "Manrope", "Segoe UI", sans-serif;
   color: var(--ink);
-  background:
-    radial-gradient(1200px 600px at 0% 0%, #ffe7bf 0%, rgba(255, 231, 191, 0) 55%),
-    radial-gradient(900px 600px at 100% 20%, #dbf7ef 0%, rgba(219, 247, 239, 0) 55%),
-    var(--bg);
+  background: var(--bg);
   line-height: 1.5;
   overflow-x: hidden;
-}
-
-.bg-shape {
-  position: fixed;
-  z-index: -1;
-  border-radius: 999px;
-  filter: blur(40px);
-  opacity: 0.6;
-}
-
-.bg-shape-1 {
-  width: 360px;
-  height: 360px;
-  background: #ffd4c6;
-  top: -80px;
-  right: -90px;
-}
-
-.bg-shape-2 {
-  width: 280px;
-  height: 280px;
-  background: #c8f3ea;
-  bottom: -100px;
-  left: -70px;
 }
 
 .section {
@@ -61,7 +32,7 @@ body {
 }
 
 .hero {
-  padding-top: 4.2rem;
+  padding-top: 2.8rem;
 }
 
 .badge {
@@ -70,9 +41,8 @@ body {
   font-size: 0.84rem;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0.3rem 0.8rem;
-  box-shadow: var(--shadow);
+  border-radius: 8px;
+  padding: 0.3rem 0.7rem;
 }
 
 h1,
@@ -111,21 +81,16 @@ h3 {
 
 .btn {
   text-decoration: none;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 0.65rem 1rem;
   font-weight: 700;
-  border: 1px solid transparent;
-  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
+  border: 1px solid var(--line);
 }
 
 .btn.primary {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 10px 24px rgba(255, 106, 61, 0.28);
+  border-color: var(--accent);
 }
 
 .btn.ghost {
@@ -146,13 +111,33 @@ h3 {
 .card {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 1rem 1.1rem;
-  box-shadow: var(--shadow);
 }
 
 .card.accent {
-  border-left: 6px solid var(--accent-2);
+  border-left: 3px solid var(--accent);
+}
+
+.notes {
+  border-style: dashed;
+}
+
+.notes p {
+  margin: 0 0 0.8rem;
+}
+
+.notes p:last-child {
+  margin-bottom: 0;
+}
+
+.notes code {
+  font-family: "Space Mono", monospace;
+  font-size: 0.85em;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.1rem 0.35rem;
 }
 
 .tree pre {
@@ -183,7 +168,7 @@ h3 {
   content: counter(step);
   width: 2rem;
   height: 2rem;
-  border-radius: 10px;
+  border-radius: 6px;
   display: grid;
   place-items: center;
   font-family: "Space Mono", monospace;
@@ -207,7 +192,7 @@ h3 {
   border: 1px solid var(--line);
   background: #fff;
   color: var(--ink);
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 0.45rem 0.8rem;
   cursor: pointer;
   font-weight: 700;
@@ -229,19 +214,16 @@ ul {
   margin-top: 0.8rem;
 }
 
+.footer a {
+  color: var(--accent);
+}
+
+.footer a:hover {
+  text-decoration: none;
+}
+
 .muted {
   color: var(--muted);
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 520ms ease, transform 520ms ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 @media (max-width: 820px) {
@@ -250,10 +232,10 @@ ul {
   }
 
   .section {
-    padding: 2.2rem 0;
+    padding: 2rem 0;
   }
 
   .hero {
-    padding-top: 3rem;
+    padding-top: 2rem;
   }
 }

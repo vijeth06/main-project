@@ -3,23 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Git Submodules in Multi-Repository Projects - project showcase">
-  <title>Git Submodules Project Showcase</title>
+  <meta name="description" content="Personal project log for implementing Git submodules in a multi-repository setup">
+  <title>My Git Submodules Project Log</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
-  <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
-
-  <header class="hero section reveal">
-    <div class="badge">DevOps Mini Project 33</div>
+  <header class="hero section">
+    <div class="badge">DevOps Mini Project</div>
     <h1>Git Submodules in Multi-Repository Projects</h1>
     <p class="lead">
-      A complete demonstration of integrating and managing external repositories
-      inside a primary project using Git submodules.
+      This page is my project write-up: what I built, what broke, and how I
+      made submodules work in a clean and repeatable way.
     </p>
     <div class="cta-row">
       <a class="btn primary" href="https://github.com/vijeth06/main-project.git" target="_blank" rel="noopener noreferrer">Main Repository</a>
@@ -28,28 +25,30 @@
   </header>
 
   <main>
-    <section class="section reveal">
-      <h2>Objective</h2>
+    <section class="section">
+      <h2>What I Had To Build</h2>
       <div class="card-grid two">
         <article class="card">
-          <h3>Problem Scenario</h3>
+          <h3>Given Scenario</h3>
           <p>
-            A primary project depends on external libraries maintained in separate repositories.
-            The team needs a clean and reproducible way to track these dependencies.
+            The main project depends on code maintained in another repository.
+            The challenge was to avoid copy-paste dependency management and keep
+            version tracking reliable for every teammate.
           </p>
         </article>
         <article class="card accent">
-          <h3>Solution</h3>
+          <h3>My Approach</h3>
           <p>
-            Use Git submodules so the main repository stores exact pointers to commits from
-            external repositories, ensuring consistency for every developer.
+            I used Git submodules so the main repository points to an exact
+            commit in the external repository. That gave me reproducibility and
+            clear ownership boundaries between repos.
           </p>
         </article>
       </div>
     </section>
 
-    <section class="section reveal">
-      <h2>Architecture</h2>
+    <section class="section">
+      <h2>Repository Layout</h2>
       <div class="tree card">
 <pre>
 main-project/
@@ -70,19 +69,35 @@ main-project/
       </div>
     </section>
 
-    <section class="section reveal">
-      <h2>Step-by-Step Workflow</h2>
+    <section class="section">
+      <h2>How I Implemented It</h2>
       <ol class="timeline">
-        <li><span>Create both repositories</span></li>
-        <li><span>Add external repository as a submodule</span></li>
-        <li><span>Commit submodule pointer in main project</span></li>
-        <li><span>Update submodule when external library changes</span></li>
-        <li><span>Synchronize and verify submodule state</span></li>
-        <li><span>Document all commands for team onboarding</span></li>
+        <li><span>Created two repositories: main-project and external-lib</span></li>
+        <li><span>Linked external-lib under libs/external-lib as a submodule</span></li>
+        <li><span>Committed .gitmodules and submodule pointer in main-project</span></li>
+        <li><span>Made an upstream change in external-lib and pulled it from main-project</span></li>
+        <li><span>Synchronized URLs and checked status hashes for consistency</span></li>
+        <li><span>Added docs plus verification scripts for easy review</span></li>
       </ol>
     </section>
 
-    <section class="section reveal">
+    <section class="section">
+      <h2>Field Notes (Real Issues I Faced)</h2>
+      <div class="card notes">
+        <p>
+          While testing local-path submodule updates on Windows, I hit a file
+          transport restriction. I solved it with:
+          <code>git -c protocol.file.allow=always submodule update --remote --merge</code>
+        </p>
+        <p>
+          After pushing to GitHub, I updated <code>.gitmodules</code> to use the
+          remote URL so other users can clone with <code>--recurse-submodules</code>
+          without local path issues.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
       <h2>Key Commands</h2>
       <div class="card-grid two">
         <article class="card command-card">
@@ -108,32 +123,38 @@ main-project/
       </div>
     </section>
 
-    <section class="section reveal">
-      <h2>Deliverables Status</h2>
+    <section class="section">
+      <h2>Deliverables Checklist</h2>
       <div class="card-grid two">
         <article class="card">
           <h3>GitHub Integration</h3>
           <ul>
-            <li>Main repository with submodule integration: complete</li>
-            <li>External repository tracked as submodule: complete</li>
-            <li>Remote URL configured in .gitmodules: complete</li>
+            <li>Created main repository and external repository</li>
+            <li>Integrated external repository as submodule</li>
+            <li>Configured remote submodule URL in .gitmodules</li>
           </ul>
         </article>
         <article class="card">
-          <h3>Documentation</h3>
+          <h3>Documentation and Proof</h3>
           <ul>
-            <li>Project overview and quick start: complete</li>
-            <li>Submodule command guide: complete</li>
-            <li>Formal project report and verification script: complete</li>
+            <li>README with quick start and architecture summary</li>
+            <li>Detailed command walkthrough in SUBMODULE_USAGE.md</li>
+            <li>PROJECT_REPORT.md + verify-project.ps1 execution checks</li>
           </ul>
         </article>
       </div>
     </section>
   </main>
 
-  <footer class="section footer reveal">
-    <p>Prepared for DevOps assignment submission.</p>
-    <p class="muted">Built as a project presentation page for Git submodules workflow.</p>
+  <footer class="section footer">
+    <p><strong>Prepared by Vijeth B</strong></p>
+    <p class="muted">DevOps assignment submission: Git submodules in a multi-repository workflow.</p>
+    <p class="muted">
+      Repositories:
+      <a href="https://github.com/vijeth06/main-project.git" target="_blank" rel="noopener noreferrer">main-project</a>
+      |
+      <a href="https://github.com/vijeth06/external-lib.git" target="_blank" rel="noopener noreferrer">external-lib</a>
+    </p>
   </footer>
 
   <script src="script.js"></script>
