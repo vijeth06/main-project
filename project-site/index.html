@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Git Submodules in Multi-Repository Projects - project showcase">
+  <title>Git Submodules Project Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+  <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+
+  <header class="hero section reveal">
+    <div class="badge">DevOps Mini Project 33</div>
+    <h1>Git Submodules in Multi-Repository Projects</h1>
+    <p class="lead">
+      A complete demonstration of integrating and managing external repositories
+      inside a primary project using Git submodules.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://github.com/vijeth06/main-project.git" target="_blank" rel="noopener noreferrer">Main Repository</a>
+      <a class="btn ghost" href="https://github.com/vijeth06/external-lib.git" target="_blank" rel="noopener noreferrer">External Repository</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section reveal">
+      <h2>Objective</h2>
+      <div class="card-grid two">
+        <article class="card">
+          <h3>Problem Scenario</h3>
+          <p>
+            A primary project depends on external libraries maintained in separate repositories.
+            The team needs a clean and reproducible way to track these dependencies.
+          </p>
+        </article>
+        <article class="card accent">
+          <h3>Solution</h3>
+          <p>
+            Use Git submodules so the main repository stores exact pointers to commits from
+            external repositories, ensuring consistency for every developer.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>Architecture</h2>
+      <div class="tree card">
+<pre>
+main-project/
+|-- .gitmodules
+|-- libs/
+|   |-- external-lib/  (submodule)
+|-- README.md
+|-- SUBMODULE_USAGE.md
+|-- PROJECT_REPORT.md
+|-- demo.ps1
+|-- verify-project.ps1
+|-- update-submodule.ps1
+|-- project-site/
+    |-- index.html
+    |-- styles.css
+    |-- script.js
+</pre>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>Step-by-Step Workflow</h2>
+      <ol class="timeline">
+        <li><span>Create both repositories</span></li>
+        <li><span>Add external repository as a submodule</span></li>
+        <li><span>Commit submodule pointer in main project</span></li>
+        <li><span>Update submodule when external library changes</span></li>
+        <li><span>Synchronize and verify submodule state</span></li>
+        <li><span>Document all commands for team onboarding</span></li>
+      </ol>
+    </section>
+
+    <section class="section reveal">
+      <h2>Key Commands</h2>
+      <div class="card-grid two">
+        <article class="card command-card">
+          <h3>Add Submodule</h3>
+          <code id="cmd-add">git submodule add &lt;external-repo-url&gt; libs/external-lib</code>
+          <button class="copy-btn" data-copy-target="cmd-add">Copy</button>
+        </article>
+        <article class="card command-card">
+          <h3>Initialize on Clone</h3>
+          <code id="cmd-init">git submodule update --init --recursive</code>
+          <button class="copy-btn" data-copy-target="cmd-init">Copy</button>
+        </article>
+        <article class="card command-card">
+          <h3>Update Submodule Pointer</h3>
+          <code id="cmd-update">git submodule update --remote --merge</code>
+          <button class="copy-btn" data-copy-target="cmd-update">Copy</button>
+        </article>
+        <article class="card command-card">
+          <h3>Sync URLs</h3>
+          <code id="cmd-sync">git submodule sync --recursive</code>
+          <button class="copy-btn" data-copy-target="cmd-sync">Copy</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>Deliverables Status</h2>
+      <div class="card-grid two">
+        <article class="card">
+          <h3>GitHub Integration</h3>
+          <ul>
+            <li>Main repository with submodule integration: complete</li>
+            <li>External repository tracked as submodule: complete</li>
+            <li>Remote URL configured in .gitmodules: complete</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Documentation</h3>
+          <ul>
+            <li>Project overview and quick start: complete</li>
+            <li>Submodule command guide: complete</li>
+            <li>Formal project report and verification script: complete</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="section footer reveal">
+    <p>Prepared for DevOps assignment submission.</p>
+    <p class="muted">Built as a project presentation page for Git submodules workflow.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -67,3 +67,8 @@ The goal is to show a complete and practical workflow for:
 
 For complete step-by-step setup, update, and verification instructions, read
 `SUBMODULE_USAGE.md`.
+
+## Project Presentation Website
+
+Open `project-site/index.html` in a browser to view a one-page visual
+presentation of the project objective, workflow, commands, and deliverables.
