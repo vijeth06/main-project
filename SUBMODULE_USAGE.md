@@ -115,3 +115,26 @@ Important:
 - Main repo commit history includes:
   - submodule add commit
   - submodule update commit
+
+## 9. Automation Scripts
+
+To make this project easier for reviewers and teammates, two helper scripts are
+included in `main-project`:
+
+1. Verify end-to-end project health:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\verify-project.ps1
+```
+
+2. Update submodule pointer using a consistent flow:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\update-submodule.ps1
+```
+
+After running update script, push main repository changes:
+
+```powershell
+git push
+```

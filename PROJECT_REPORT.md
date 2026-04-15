@@ -27,10 +27,20 @@ Run from inside `main-project`:
 2. `git submodule sync --recursive`
 3. `git submodule update --init --recursive`
 4. `powershell -ExecutionPolicy Bypass -File .\demo.ps1`
+5. `powershell -ExecutionPolicy Bypass -File .\verify-project.ps1`
 
 Expected outcome:
 - Submodule commit hash is displayed.
 - Demo prints external message and version.
+- Automated verifier prints `Project Verification Passed`.
+
+## Project Quality Additions
+
+- `verify-project.ps1`: one-command validator for repository structure,
+  submodule health, and functional module output.
+- `update-submodule.ps1`: standardized workflow to fetch latest submodule
+  commit and commit pointer updates.
+- `demo.ps1`: runtime proof that main project consumes submodule code.
 
 ## Notes
 
