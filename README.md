@@ -18,7 +18,6 @@ The goal is to show a complete and practical workflow for:
 - `.gitmodules`: canonical mapping for submodule path and remote URL.
 - `SUBMODULE_USAGE.md`: full command guide and operational notes.
 - `demo.ps1`: simple runtime demo that imports and calls the external module.
-- `verify-project.ps1`: one-command end-to-end project verification.
 - `update-submodule.ps1`: repeatable workflow to pull and record submodule updates.
 
 ## Quick Start
@@ -38,10 +37,6 @@ The goal is to show a complete and practical workflow for:
 4. Run the demo:
 
 	 `powershell -ExecutionPolicy Bypass -File .\demo.ps1`
-
-5. Run the full verifier:
-
-	`powershell -ExecutionPolicy Bypass -File .\verify-project.ps1`
 
 ## Core Submodule Commands
 
@@ -67,8 +62,3 @@ The goal is to show a complete and practical workflow for:
 
 For complete step-by-step setup, update, and verification instructions, read
 `SUBMODULE_USAGE.md`.
-
-## Project Presentation Website
-
-Open `project-site/index.html` in a browser to view a one-page visual
-presentation of the project objective, workflow, commands, and deliverables.
