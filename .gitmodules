@@ -3,7 +3,7 @@
 	url = https://github.com/vijeth06/external-lib.git
 [submodule "libs/external-utils"]
 	path = libs/external-utils
-	url = file:///d:/sem6/Devops/project/external-utils
+	url = https://github.com/vijeth06/external-utils.git
 [submodule "libs/external-config"]
 	path = libs/external-config
-	url = file:///d:/sem6/Devops/project/external-config
+	url = https://github.com/vijeth06/external-config.git
