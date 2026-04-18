@@ -1,66 +1,62 @@
 # Main Project: Git Submodules in Multi-Repository Projects
 
-This repository demonstrates how to manage external dependencies that live in
-separate Git repositories by using multiple Git submodules.
+This repository demonstrates a multi-repository dependency setup using Git
+submodules. The main project integrates four externally maintained modules and
+tracks each one by commit hash for reproducible builds.
 
-## Project Purpose
+## Integrated Submodules
 
-The goal is to show a complete and practical workflow for:
+- `libs/external-lib` -> core feature module
+- `libs/external-utils` -> utility helper module
+- `libs/external-config` -> configuration module
+- `libs/external-logger` -> logging module
 
-- Creating a primary repository.
-- Integrating external repositories as submodules.
-- Updating and synchronizing submodule references.
-- Sharing reproducible setup commands with a development team.
+Submodule source mappings are defined in `.gitmodules`.
 
-## Repository Structure
+## Project Goals
 
-- `libs/external-lib`: core library submodule.
-- `libs/external-utils`: utilities helper submodule.
-- `libs/external-config`: configuration helper submodule.
-- `libs/external-logger`: logging helper submodule.
-- `.gitmodules`: canonical mapping for submodule path and remote URL.
-- `SUBMODULE_USAGE.md`: full command guide and operational notes.
-- `demo.ps1`: runtime demo that imports and calls all submodule modules.
+- Keep external dependencies in independent repositories.
+- Integrate dependencies into one primary repository.
+- Pin exact dependency versions using submodule commit pointers.
+- Provide a repeatable update flow for teams.
 
 ## Quick Start
 
-1. Clone with submodules:
+```powershell
+git clone --recurse-submodules https://github.com/vijeth06/main-project.git
+cd main-project
+git submodule status
+powershell -ExecutionPolicy Bypass -File .\demo.ps1
+```
 
-	 `git clone --recurse-submodules https://github.com/vijeth06/main-project.git`
+## Expected Demo Output
 
-2. Enter the repository:
+Running `demo.ps1` prints values from all four submodules:
 
-	 `cd main-project`
+- External library message/version/status
+- Utils message
+- Config environment
+- Logger message
 
-3. Validate submodule status:
+## Core Submodule Operations
 
-	 `git submodule status`
+```powershell
+# Initialize submodules after clone
+git submodule update --init --recursive
 
-4. Run the demo:
+# Update all submodules to latest remote commits
+git submodule update --remote --merge
 
-	 `powershell -ExecutionPolicy Bypass -File .\demo.ps1`
+# Record updated pointers in main project
+git add libs/external-lib libs/external-utils libs/external-config libs/external-logger
+git commit -m "Update submodule pointers"
 
-## Core Submodule Commands
-
-- Add submodules:
-
-	`git submodule add <repo-url> libs/<submodule-name>`
-
-- Initialize and fetch submodules after clone:
-
-	`git submodule update --init --recursive`
-
-- Pull latest changes from submodule remotes and update pointers:
-
-	`git submodule update --remote --merge`
-	`git add libs/external-lib libs/external-utils libs/external-config libs/external-logger`
-	`git commit -m "Update submodule pointers"`
-
-- Synchronize URL changes from `.gitmodules` to local config:
-
-	`git submodule sync --recursive`
+# Sync URL changes from .gitmodules
+git submodule sync --recursive
+```
 
 ## Documentation
 
-For complete step-by-step setup, update, and verification instructions, read
-`SUBMODULE_USAGE.md`.
+- `SUBMODULE_USAGE.md` -> detailed setup and lifecycle guide
+- `PROJECT_REPORT.md` -> assignment completion summary
+- `demo.ps1` -> runtime validation script
