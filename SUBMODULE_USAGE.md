@@ -8,9 +8,11 @@ This project demonstrates how to integrate and manage multiple external reposito
 - `external-lib` -> external core library repository
 - `external-utils` -> external utilities repository
 - `external-config` -> external configuration repository
+- `external-logger` -> external logging repository
 - `main-project/libs/external-lib` -> submodule working tree
 - `main-project/libs/external-utils` -> submodule working tree
 - `main-project/libs/external-config` -> submodule working tree
+- `main-project/libs/external-logger` -> submodule working tree
 
 ## 1. Create the Main Repository
 
@@ -48,6 +50,14 @@ git init
 "# External Config`n" | Set-Content README.md
 git add README.md
 git commit -m "Initial commit for external-config"
+
+cd ..
+mkdir external-logger
+cd external-logger
+git init
+"# External Logger`n" | Set-Content README.md
+git add README.md
+git commit -m "Initial commit for external-logger"
 ```
 
 ## 3. Add External Repositories as Submodules
@@ -58,7 +68,8 @@ Run this from `main-project`:
 git -c protocol.file.allow=always submodule add "..\external-lib" "libs/external-lib"
 git -c protocol.file.allow=always submodule add "..\external-utils" "libs/external-utils"
 git -c protocol.file.allow=always submodule add "..\external-config" "libs/external-config"
-git commit -am "Add external-lib, external-utils, external-config as submodules"
+git -c protocol.file.allow=always submodule add "..\external-logger" "libs/external-logger"
+git commit -am "Add external-lib, external-utils, external-config, external-logger as submodules"
 ```
 
 Notes:
@@ -89,7 +100,7 @@ Purpose of each command:
 
 ```powershell
 git -c protocol.file.allow=always submodule update --remote --merge
-git add libs/external-lib libs/external-utils libs/external-config
+git add libs/external-lib libs/external-utils libs/external-config libs/external-logger
 git commit -m "Update submodule pointers to latest commits"
 ```
 

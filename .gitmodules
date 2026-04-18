@@ -7,3 +7,6 @@
 [submodule "libs/external-config"]
 	path = libs/external-config
 	url = https://github.com/vijeth06/external-config.git
+[submodule "libs/external-logger"]
+	path = libs/external-logger
+	url = file:///d:/sem6/Devops/project/external-logger

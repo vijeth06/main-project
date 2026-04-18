@@ -17,6 +17,7 @@ The goal is to show a complete and practical workflow for:
 - `libs/external-lib`: core library submodule.
 - `libs/external-utils`: utilities helper submodule.
 - `libs/external-config`: configuration helper submodule.
+- `libs/external-logger`: logging helper submodule.
 - `.gitmodules`: canonical mapping for submodule path and remote URL.
 - `SUBMODULE_USAGE.md`: full command guide and operational notes.
 - `demo.ps1`: runtime demo that imports and calls all submodule modules.
@@ -52,7 +53,7 @@ The goal is to show a complete and practical workflow for:
 - Pull latest changes from submodule remotes and update pointers:
 
 	`git submodule update --remote --merge`
-	`git add libs/external-lib libs/external-utils libs/external-config`
+	`git add libs/external-lib libs/external-utils libs/external-config libs/external-logger`
 	`git commit -m "Update submodule pointers"`
 
 - Synchronize URL changes from `.gitmodules` to local config:

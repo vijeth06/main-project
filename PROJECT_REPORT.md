@@ -3,7 +3,7 @@
 ## Problem Statement Coverage
 
 - Create a main repository: Completed in `main-project`.
-- Add external repositories as Git submodules: Completed as `libs/external-lib`, `libs/external-utils`, and `libs/external-config`.
+- Add external repositories as Git submodules: Completed as `libs/external-lib`, `libs/external-utils`, `libs/external-config`, and `libs/external-logger`.
 - Update and synchronize submodules: Completed using update and sync commands.
 - Document commands used to manage submodules: Completed in `SUBMODULE_USAGE.md`.
 
@@ -13,8 +13,9 @@
   - https://github.com/vijeth06/main-project.git
 - External repositories:
   - https://github.com/vijeth06/external-lib.git
-  - external-utils (local repository)
-  - external-config (local repository)
+  - https://github.com/vijeth06/external-utils.git
+  - https://github.com/vijeth06/external-config.git
+  - external-logger (local repository)
 - Submodule configuration file:
   - `.gitmodules` points submodule to external GitHub URL.
 - Documentation:
@@ -32,7 +33,7 @@ Run from inside `main-project`:
 
 Expected outcome:
 - Submodule commit hash is displayed.
-- Demo prints external message and version.
+- Demo prints messages from library, utils, config, and logger modules.
 
 ## Project Quality Additions
 
