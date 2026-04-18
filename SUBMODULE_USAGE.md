@@ -1,12 +1,16 @@
 # Git Submodules in Multi-Repository Projects
 
-This project demonstrates how to integrate and manage an external repository as a Git submodule.
+This project demonstrates how to integrate and manage multiple external repositories as Git submodules.
 
 ## Repository Layout
 
 - `main-project` -> primary repository
-- `external-lib` -> external dependency repository
+- `external-lib` -> external core library repository
+- `external-utils` -> external utilities repository
+- `external-config` -> external configuration repository
 - `main-project/libs/external-lib` -> submodule working tree
+- `main-project/libs/external-utils` -> submodule working tree
+- `main-project/libs/external-config` -> submodule working tree
 
 ## 1. Create the Main Repository
 
@@ -19,7 +23,7 @@ git add README.md
 git commit -m "Initial commit for main project"
 ```
 
-## 2. Create the External Repository
+## 2. Create External Repositories
 
 ```powershell
 mkdir external-lib
@@ -28,20 +32,38 @@ git init
 "# External Library`n" | Set-Content README.md
 git add README.md
 git commit -m "Initial commit for external library"
+
+cd ..
+mkdir external-utils
+cd external-utils
+git init
+"# External Utils`n" | Set-Content README.md
+git add README.md
+git commit -m "Initial commit for external-utils"
+
+cd ..
+mkdir external-config
+cd external-config
+git init
+"# External Config`n" | Set-Content README.md
+git add README.md
+git commit -m "Initial commit for external-config"
 ```
 
-## 3. Add External Repository as Submodule
+## 3. Add External Repositories as Submodules
 
 Run this from `main-project`:
 
 ```powershell
 git -c protocol.file.allow=always submodule add "..\external-lib" "libs/external-lib"
-git commit -am "Add external-lib as submodule"
+git -c protocol.file.allow=always submodule add "..\external-utils" "libs/external-utils"
+git -c protocol.file.allow=always submodule add "..\external-config" "libs/external-config"
+git commit -am "Add external-lib, external-utils, external-config as submodules"
 ```
 
 Notes:
 - `.gitmodules` stores submodule metadata (name, path, url).
-- `libs/external-lib` is tracked as a Gitlink (mode `160000`).
+- Each `libs/*` submodule is tracked as a Gitlink (mode `160000`).
 
 ## 4. Initialize and Synchronize Submodules
 
@@ -67,11 +89,11 @@ Purpose of each command:
 
 ```powershell
 git -c protocol.file.allow=always submodule update --remote --merge
-git add libs/external-lib
-git commit -m "Update submodule to latest external-lib commit"
+git add libs/external-lib libs/external-utils libs/external-config
+git commit -m "Update submodule pointers to latest commits"
 ```
 
-This records the new submodule commit pointer in the main repository.
+This records new submodule commit pointers in the main repository.
 
 ## 6. Clone Workflow for New Developers
 
@@ -116,19 +138,12 @@ Important:
   - submodule add commit
   - submodule update commit
 
-## 9. Automation Scripts
+## 9. Multi-Submodule Validation
 
-To make this project easier for teammates, this helper script is included in
-`main-project`:
-
-1. Update submodule pointer using a consistent flow:
+Useful checks after updates:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\update-submodule.ps1
-```
-
-After running update script, push main repository changes:
-
-```powershell
-git push
+git submodule status
+git diff -- .gitmodules
+git log --oneline --max-count=5
 ```

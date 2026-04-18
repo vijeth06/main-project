@@ -1,3 +1,9 @@
 [submodule "libs/external-lib"]
 	path = libs/external-lib
 	url = https://github.com/vijeth06/external-lib.git
+[submodule "libs/external-utils"]
+	path = libs/external-utils
+	url = file:///d:/sem6/Devops/project/external-utils
+[submodule "libs/external-config"]
+	path = libs/external-config
+	url = file:///d:/sem6/Devops/project/external-config

@@ -3,7 +3,7 @@
 ## Problem Statement Coverage
 
 - Create a main repository: Completed in `main-project`.
-- Add another repository as a Git submodule: Completed as `libs/external-lib`.
+- Add external repositories as Git submodules: Completed as `libs/external-lib`, `libs/external-utils`, and `libs/external-config`.
 - Update and synchronize submodules: Completed using update and sync commands.
 - Document commands used to manage submodules: Completed in `SUBMODULE_USAGE.md`.
 
@@ -11,8 +11,10 @@
 
 - Main project repository:
   - https://github.com/vijeth06/main-project.git
-- External library repository:
+- External repositories:
   - https://github.com/vijeth06/external-lib.git
+  - external-utils (local repository)
+  - external-config (local repository)
 - Submodule configuration file:
   - `.gitmodules` points submodule to external GitHub URL.
 - Documentation:
@@ -34,9 +36,7 @@ Expected outcome:
 
 ## Project Quality Additions
 
-- `update-submodule.ps1`: standardized workflow to fetch latest submodule
-  commit and commit pointer updates.
-- `demo.ps1`: runtime proof that main project consumes submodule code.
+- `demo.ps1`: runtime proof that main project consumes code from all submodules.
 
 ## Notes
 
